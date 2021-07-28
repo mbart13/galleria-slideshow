@@ -1,7 +1,8 @@
+import GalleryGrid from 'components/organisms/GalleryGrid'
 import React from 'react'
 
 const Gallery = (): JSX.Element => {
-  return <div>Gallery</div>
+  return <GalleryGrid />
 }
 
 export default Gallery
