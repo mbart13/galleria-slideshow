@@ -3,9 +3,13 @@ import { createGlobalStyle } from 'styled-components'
 export const GlobalStyles = createGlobalStyle`
 
   :root {
-
+    --color-black: #000;
+    --color-grey-1: #7D7D7D;
+    --color-grey-9: #E5E5E5;
+    --color-grey-10: #F3F3F3;
+    --color-white: #FFF;
+    --max-width: 85rem;
   }
-
 
   /* Box sizing rules */
   html {
@@ -54,6 +58,7 @@ export const GlobalStyles = createGlobalStyle`
 
   ul {
     list-style-type: none;
+    padding: 0;
   }
 
   /* Inherit fonts for inputs and buttons */
@@ -80,9 +85,14 @@ export const GlobalStyles = createGlobalStyle`
     }
   }
 
+  body {
+    font-family: 'Libre Baskerville', serif;
+    color: var(--color-black);
+  }
+
   a:focus,
   button:focus {
-    outline: 2px dashed var(--color-red);
+    outline: 2px dashed red;
     outline-offset: 4px;
   }
 
