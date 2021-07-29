@@ -6,6 +6,16 @@ import data from 'data/data.json'
 import Macy from 'macy'
 import { useEffect } from 'react'
 import GalleryCard from 'components/molecules/GalleryCard'
+import { motion } from 'framer-motion'
+
+export const pageAnimation = {
+  show: {
+    transition: {
+      staggerChildren: 0.35,
+      when: 'beforeChildren',
+    },
+  },
+}
 
 const Wrapper = styled(Container)`
   padding-top: 1.5rem;
@@ -15,7 +25,7 @@ const Wrapper = styled(Container)`
   }
 `
 
-const List = styled.ul`
+const List = styled(motion.ul)`
   margin: 0;
 
   img {

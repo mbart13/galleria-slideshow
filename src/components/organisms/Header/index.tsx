@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import QUERIES from 'styles/breakpoints'
 import Container from 'components/organisms/Container'
+import { motion } from 'framer-motion'
 
 const StyledHeader = styled(Container)`
   padding-top: 1.5rem;
@@ -20,7 +21,7 @@ const StyledLink = styled(Link)`
   font-size: 0.5625rem;
   font-weight: bold;
   letter-spacing: 0.120625rem;
-  transition: all 0.2s ease;
+  transition: color 0.2s ease;
 
   &:hover {
     color: var(--color-black);
@@ -32,7 +33,7 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Navigation = styled.nav`
+const Navigation = styled(motion.nav)`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,10 +53,24 @@ const Navigation = styled.nav`
   }
 `
 
+const NavAnim = {
+  hide: {
+    opacity: 0,
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 1,
+      ease: 'easeOut',
+      delay: 0.5,
+    },
+  },
+}
+
 const Header = (): JSX.Element => {
   return (
     <StyledHeader forwardedAs="header">
-      <Navigation>
+      <Navigation variants={NavAnim} initial="hide" animate="show">
         <Logo />
         <StyledLink to="/slideshow">Start Slideshow</StyledLink>
       </Navigation>

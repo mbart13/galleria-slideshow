@@ -8,7 +8,7 @@ export const GlobalStyles = createGlobalStyle`
     --color-grey-9: #E5E5E5;
     --color-grey-10: #F3F3F3;
     --color-white: #FFF;
-    --max-width: 85rem;
+    --max-width: 88rem;
   }
 
   /* Box sizing rules */
