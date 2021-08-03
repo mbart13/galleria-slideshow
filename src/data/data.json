@@ -77,7 +77,7 @@
     "description": "The painting, in vertical format, shows a close-up view of Christ's disciples struggling frantically against the heavy storm to regain control of their fishing boat. A huge wave beats the bow and rips the sail. One of the disciples is seen vomiting over the side. Another one, looking directly out at the viewer, is a self-portrait of the artist. Only Christ, depicted on the right, remains calm.",
     "source": "https://en.wikipedia.org/wiki/The_Storm_on_the_Sea_of_Galilee",
     "artist": {
-      "image": "./assets/storm-on-the-sea-of-galilee/artist.jpg",
+      "image": "./assets/the-storm-on-the-sea-of-galilee/artist.jpg",
       "name": "Rembrandt"
     },
     "images": {
@@ -126,7 +126,7 @@
     }
   },
   {
-    "name": "Van Gogh self-portrait",
+    "name": "Van Gogh \nself-portrait",
     "year": 1889,
     "description": "This self-portrait was one of about 32 produced over a 10-year period, and these were an important part of his work as a painter; he painted himself because he often lacked the money to pay for models. He took the painting with him to Auvers-sur-Oise, near Paris, where he showed it to Dr. Paul Gachet, who thought it was \"absolutely fanatical\". Art historians are divided as to whether this painting or Self-portrait without beard is Van Gogh's final self-portrait. The art historians Ingo F. Walther and Jan Hulsker consider this to be the last.",
     "source": "https://en.wikipedia.org/wiki/Van_Gogh_self-portrait_(1889)",

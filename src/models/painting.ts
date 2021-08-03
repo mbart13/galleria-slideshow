@@ -1,4 +1,5 @@
 export interface Painting {
+  id: number
   name: string
   year: number
   description: string
