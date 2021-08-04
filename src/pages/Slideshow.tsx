@@ -1,29 +1,34 @@
-import styled from 'styled-components'
-import Queries from 'styles/breakpoints'
+import styled from 'styled-components/macro'
+import queries from 'styles/breakpoints'
 import data from 'data/data.json'
 import Slide from 'components/organisms/Slide'
 import SlideFooter from 'components/molecules/SlideFooter'
+import Container from 'components/organisms/Container'
 
-const Wrapper = styled.main`
+const Wrapper = styled(Container)`
   padding-top: 1.5rem;
-  overflow-x: hidden;
   display: flex;
-  @media ${Queries.tabletUp} {
+  overflow: hidden;
+
+  @media ${queries.tabletUp} {
     padding-top: 2.5rem;
   }
 
-  @media ${Queries.desktopUp} {
-    padding-top: 6.25rem;
+  @media ${queries.desktopUp} {
+    padding-top: 4rem;
   }
 `
 const painting = data[0]
 const Slideshow = (): JSX.Element => {
   return (
     <>
-      <Wrapper>
+      {/* <Wrapper forwardedAs="main">
         {data.map((painting, index) => (
-          <Slide {...painting} id={index} key={index} />
+          <Slide {...painting} key={index} id={index} />
         ))}
+      </Wrapper> */}
+      <Wrapper forwardedAs="main">
+        <Slide />
       </Wrapper>
       <SlideFooter />
     </>

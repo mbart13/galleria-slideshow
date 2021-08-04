@@ -1,24 +1,25 @@
 import ProgressBar from 'components/atoms/ProgressBar'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
+import { useDispatch } from 'react-redux'
+
 import Container from 'components/organisms/Container'
-import Queries from 'styles/breakpoints'
+import queries from 'styles/breakpoints'
 import { ReactComponent as NextButton } from 'assets/shared/icon-next-button.svg'
 import { ReactComponent as PrevButton } from 'assets/shared/icon-back-button.svg'
+import { paginate } from 'store/slidesSlice'
 
-const Footer = styled.footer`
-  padding: 1.0625rem 1.5rem;
+const Footer = styled.div`
+  padding: 1.0625rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  @media ${Queries.tabletUp} {
-    padding: 1.5625rem 2.5rem;
+  @media ${queries.tabletUp} {
+    padding: 1.5625rem 0;
   }
 `
 
 const Controls = styled.div`
-  display: flex;
-
   & > * + * {
     margin-left: 1.4375rem;
   }
@@ -26,7 +27,7 @@ const Controls = styled.div`
   svg {
     width: 1rem;
 
-    @media ${Queries.tabletUp} {
+    @media ${queries.tabletUp} {
       width: 1.5625rem;
     }
   }
@@ -38,7 +39,7 @@ const SlideInfo = styled.div`
     font-weight: bold;
     margin-bottom: 0.5625rem;
 
-    @media ${Queries.tabletUp} {
+    @media ${queries.tabletUp} {
       font-size: 1.125rem;
     }
   }
@@ -47,21 +48,23 @@ const SlideInfo = styled.div`
     font-size: 0.625rem;
     color: rgba(0, 0, 0, 0.75);
 
-    @media ${Queries.tabletUp} {
+    @media ${queries.tabletUp} {
       font-size: 0.8125rem;
     }
   }
 `
 
-const ButtonIcon = styled.button`
+const ArrowButton = styled.button`
   background: none;
   border: none;
   padding: 0;
+  cursor: pointer;
 `
 
 const SlideFooter = (): JSX.Element => {
+  const dispatch = useDispatch()
   return (
-    <>
+    <Container as="footer">
       <ProgressBar width={8} />
       <Footer>
         <SlideInfo>
@@ -69,15 +72,21 @@ const SlideFooter = (): JSX.Element => {
           <p>Vincent Van Gogh</p>
         </SlideInfo>
         <Controls>
-          <ButtonIcon>
+          <ArrowButton
+            aria-label="Previous Slide"
+            onClick={() => dispatch(paginate(-1))}
+          >
             <PrevButton />
-          </ButtonIcon>
-          <ButtonIcon>
+          </ArrowButton>
+          <ArrowButton
+            aria-label="Next Slide"
+            onClick={() => dispatch(paginate(1))}
+          >
             <NextButton />
-          </ButtonIcon>
+          </ArrowButton>
         </Controls>
       </Footer>
-    </>
+    </Container>
   )
 }
 

@@ -1,12 +1,13 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import QUERIES from 'styles/breakpoints'
+import queries from 'styles/breakpoints'
 import Container from 'components/organisms/Container'
 import data from 'data/data.json'
 import Macy from 'macy'
 import { Dispatch, SetStateAction, useEffect } from 'react'
 import GalleryCard from 'components/molecules/GalleryCard'
 import { motion } from 'framer-motion'
+import { useDispatch } from 'react-redux'
 
 export const container = {
   hide: {
@@ -22,10 +23,10 @@ export const container = {
   },
 }
 
-const Wrapper = styled.main`
+const Wrapper = styled(Container)`
   padding-top: 1.5rem;
 
-  @media ${QUERIES.tabletUp} {
+  @media ${queries.tabletUp} {
     padding-top: 2.5rem;
   }
 `
@@ -63,7 +64,7 @@ const Gallery: React.FC<GalleryProps> = ({ setCurrent }): JSX.Element => {
   }, [])
 
   return (
-    <Wrapper>
+    <Wrapper forwardedAs="main">
       <List
         id="masonry-grid"
         variants={container}
@@ -71,7 +72,7 @@ const Gallery: React.FC<GalleryProps> = ({ setCurrent }): JSX.Element => {
         animate="show"
       >
         {data.map((painting, index) => {
-          return <GalleryCard {...painting} key={painting.name} id={index} />
+          return <GalleryCard {...painting} id={index} key={painting.name} />
         })}
       </List>
     </Wrapper>

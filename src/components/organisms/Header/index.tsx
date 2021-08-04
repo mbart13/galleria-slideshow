@@ -1,16 +1,16 @@
 import Logo from 'components/atoms/Logo'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
-import Queries from 'styles/breakpoints'
+import queries from 'styles/breakpoints'
 import Container from 'components/organisms/Container'
 import { motion } from 'framer-motion'
 
-const StyledHeader = styled.header`
+const StyledHeader = styled(Container)`
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--color-grey-9);
 
-  @media ${Queries.laptopUp} {
+  @media ${queries.laptopUp} {
     border-bottom: none;
   }
 `
@@ -29,7 +29,7 @@ const StyledLink = styled(Link)`
     color: var(--color-black);
   }
 
-  @media ${Queries.tabletUp} {
+  @media ${queries.tabletUp} {
     font-size: 0.75rem;
     letter-spacing: 0.160625rem;
   }
@@ -41,7 +41,7 @@ const Navigation = styled(motion.nav)`
   align-items: center;
   position: relative;
 
-  @media ${Queries.laptopUp} {
+  @media ${queries.laptopUp} {
     &::after {
       content: '';
       position: absolute;
@@ -71,7 +71,7 @@ const NavAnim = {
 
 const Header = (): JSX.Element => {
   return (
-    <StyledHeader>
+    <StyledHeader forwardedAs="header">
       <Navigation variants={NavAnim} initial="hide" animate="show">
         <Logo />
         <StyledLink to="/slideshow">Start Slideshow</StyledLink>

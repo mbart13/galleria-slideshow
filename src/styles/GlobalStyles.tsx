@@ -88,9 +88,11 @@ export const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Libre Baskerville', serif;
     color: var(--color-black);
-    padding: 0 1.5rem;
-  margin: 0 auto;
-  max-width: var(--max-width);
+    overflow-x: hidden;
+    position: relative;
+    /* padding: 0 1.5rem;
+    margin: 0 auto;
+    max-width: var(--max-width); */
   }
 
   a:focus,

@@ -1,8 +1,10 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { Link } from 'react-router-dom'
 import { Painting } from 'models/painting'
 import { useState } from 'react'
 import { motion } from 'framer-motion'
+import { useDispatch } from 'react-redux'
+import { setCurrentSlide } from 'store/slidesSlice'
 
 const Figure = styled.figure`
   position: relative;
@@ -69,10 +71,14 @@ const GalleryCard: React.FC<Painting> = ({
   images,
   artist,
 }): JSX.Element => {
+  const dispatch = useDispatch()
   return (
     <motion.li variants={CardAnim}>
       <Figure>
-        <Link to="/slideshow" onClick={() => console.log('clicked')}>
+        <Link
+          to="/slideshow"
+          onClick={() => dispatch(setCurrentSlide(id ? id : 0))}
+        >
           <img src={images.thumbnail} alt="" />
           <Caption variants={CaptionAnim}>
             <h2>{name}</h2>

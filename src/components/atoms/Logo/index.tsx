@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 import { ReactComponent as LogoIcon } from 'assets/shared/logo.svg'
-import Queries from 'styles/breakpoints'
+import queries from 'styles/breakpoints'
 
 const StyledLink = styled(Link)`
   line-height: 1;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     height: auto;
   }
 
-  @media ${Queries.laptopUp} {
+  @media ${queries.laptopUp} {
     width: 10.625rem;
   }
 `

@@ -1,4 +1,4 @@
-import styled, { keyframes, css } from 'styled-components'
+import styled, { keyframes, css } from 'styled-components/macro'
 
 type ProgressBarProps = {
   width: number
