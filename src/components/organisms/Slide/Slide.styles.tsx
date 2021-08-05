@@ -178,6 +178,10 @@ export const Button = styled(motion.button)`
   cursor: pointer;
   transition: all 0.2s linear;
 
+  & svg g {
+    transition: fill 0.2s linear;
+  }
+
   @media ${queries.tabletUp} {
     top: unset;
     bottom: 1rem;
