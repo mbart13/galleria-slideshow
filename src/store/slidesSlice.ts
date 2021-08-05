@@ -8,7 +8,6 @@ type SlidesSlice = {
   direction: number
   currentSlideIndex: number
   isPlaying: boolean
-  slideHeight: number
 }
 
 const initialSlidesState: SlidesSlice = {
@@ -16,7 +15,6 @@ const initialSlidesState: SlidesSlice = {
   direction: 0,
   currentSlideIndex: 0,
   isPlaying: false,
-  slideHeight: 0,
 }
 
 const slidesSlice = createSlice({
