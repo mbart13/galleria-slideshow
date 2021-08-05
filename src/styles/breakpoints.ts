@@ -1,7 +1,7 @@
 const breakpoints = {
   tabletMin: 700,
   laptopMin: 1000,
-  desktopMin: 1150,
+  desktopMin: 1250,
 }
 
 const queries = {

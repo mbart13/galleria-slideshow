@@ -26,10 +26,10 @@ const Wrapper = styled.div<ProgressBarProps>`
     background-color: var(--color-black);
     height: 100%;
     width: ${props => `${props.width}%`};
-    animation: ${props =>
+    /* animation: ${props =>
       css`
         ${animateProgress(props.width)} 1s linear
-      `};
+      `}; */
   }
 `
 

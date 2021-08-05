@@ -7,12 +7,16 @@ type SlidesSlice = {
   slides: Painting[]
   direction: number
   currentSlideIndex: number
+  isPlaying: boolean
+  slideHeight: number
 }
 
 const initialSlidesState: SlidesSlice = {
   slides: data,
   direction: 0,
   currentSlideIndex: 0,
+  isPlaying: false,
+  slideHeight: 0,
 }
 
 const slidesSlice = createSlice({
@@ -37,13 +41,13 @@ const slidesSlice = createSlice({
   },
 })
 
-export const getNumberOfSlides = (state: RootState): number =>
+export const numberOfSlides = (state: RootState): number =>
   state.slideshow.slides.length
 
-export const getCurrentSlideIndex = (state: RootState): number =>
+export const currentSlideIndex = (state: RootState): number =>
   state.slideshow.currentSlideIndex
 
-export const getCurrentSlide = (state: RootState): Painting =>
+export const currentSlide = (state: RootState): Painting =>
   state.slideshow.slides[state.slideshow.currentSlideIndex]
 
 export const getDirection = (state: RootState): number =>

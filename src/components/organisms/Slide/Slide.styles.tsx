@@ -10,9 +10,13 @@ type ArticleProps = {
 }
 
 export const Article = styled(motion.article)`
-  flex: 0 0 100%;
-
+  position: absolute;
+  left: 0;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  max-width: var(--max-width);
   @media ${queries.desktopUp} {
+    margin-right: 1.5rem;
     display: flex;
     align-items: flex-start;
   }
@@ -123,7 +127,7 @@ export const ArtistImageDesktop = styled.div`
 export const Body = styled.div<DescriptionProps>`
   padding-bottom: 4.1875rem;
   position: relative;
-
+  flex-shrink: 0;
   @media ${queries.tabletUp} {
     padding-left: 7.1875rem;
     padding-right: 7.1875rem;
@@ -165,7 +169,7 @@ export const Body = styled.div<DescriptionProps>`
   }
 `
 
-export const Button = styled.button`
+export const Button = styled(motion.button)`
   position: absolute;
   top: 1rem;
   left: 1rem;
@@ -203,13 +207,9 @@ export const Description = styled.p`
   font-size: 0.875rem;
   color: var(--color-grey-1);
   line-height: 2;
-  margin-bottom: 4.25rem;
+  margin-bottom: 2.25rem;
   z-index: 2;
   position: relative;
-
-  @media ${queries.tabletUp} {
-    margin-bottom: 2.5rem;
-  }
 `
 
 export const Link = styled.a`
