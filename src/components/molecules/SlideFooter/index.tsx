@@ -1,6 +1,6 @@
-import ProgressBar from 'components/atoms/ProgressBar'
 import { useDispatch, useSelector } from 'react-redux'
 
+import ProgressBar from 'components/atoms/ProgressBar'
 import { ReactComponent as NextButton } from 'assets/shared/icon-next-button.svg'
 import { ReactComponent as PrevButton } from 'assets/shared/icon-back-button.svg'
 import { paginate } from 'store/slidesSlice'

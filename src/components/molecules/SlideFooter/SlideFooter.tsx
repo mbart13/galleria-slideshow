@@ -1,10 +1,11 @@
 import styled from 'styled-components/macro'
 
-import Container from 'components/organisms/Container'
 import queries from 'styles/breakpoints'
 
-export const Wrapper = styled(Container)`
+export const Wrapper = styled.div`
   position: absolute;
+  margin: 0 auto;
+  max-width: var(--max-width);
   top: 64rem;
   padding: 0;
   width: calc(100% - 3rem);

@@ -2,14 +2,14 @@ import styled from 'styled-components/macro'
 import ReactDOM from 'react-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useCallback, useEffect, useRef } from 'react'
 
-import Container from 'components/organisms/Container'
 import { currentSlide } from 'store/slidesSlice'
 import { isOpen, closeLightBox } from 'store/lightboxSlice'
-import { useCallback, useEffect, useRef } from 'react'
 
 const Overlay = styled(motion.div)`
   position: fixed;
+
   top: 0;
   bottom: 0;
   display: grid;
@@ -23,6 +23,9 @@ const Overlay = styled(motion.div)`
 
 const ImageWrapper = styled.div`
   position: relative;
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  max-width: var(--max-width);
 `
 
 const CloseButton = styled.button`
@@ -92,14 +95,12 @@ const LightBox = (): JSX.Element => {
           ref={modalRef}
           onClick={handleClickOutside}
         >
-          <Container>
-            <ImageWrapper>
-              <img src={current.images.gallery} alt={current.name} />
-              <CloseButton onClick={() => dispatch(closeLightBox())}>
-                Close
-              </CloseButton>
-            </ImageWrapper>
-          </Container>
+          <ImageWrapper>
+            <img src={current.images.gallery} alt={current.name} />
+            <CloseButton onClick={() => dispatch(closeLightBox())}>
+              Close
+            </CloseButton>
+          </ImageWrapper>
         </Overlay>
       )}
     </AnimatePresence>,

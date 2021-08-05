@@ -1,29 +1,18 @@
 import styled from 'styled-components/macro'
 import queries from 'styles/breakpoints'
-import Container from 'components/organisms/Container'
 import data from 'data/data.json'
 import Macy from 'macy'
-import { useEffect } from 'react'
-import GalleryCard from 'components/molecules/GalleryCard'
 import { motion } from 'framer-motion'
+import { useEffect } from 'react'
 
-export const container = {
-  hide: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.25,
-      ease: 'easeOut',
-      delayChildren: 1.5,
-    },
-  },
-}
+import GalleryCard from 'components/molecules/GalleryCard'
+import { pageAnimation, galleryAnimation } from 'utils/animations'
 
-const Wrapper = styled(Container)`
+const Wrapper = styled(motion.main)`
   padding-top: 1.5rem;
-
+  padding: 0 1.5rem;
+  margin: 0 auto;
+  max-width: var(--max-width);
   @media ${queries.tabletUp} {
     padding-top: 2.5rem;
   }
@@ -58,8 +47,13 @@ const Gallery = (): JSX.Element => {
   }, [])
 
   return (
-    <Wrapper forwardedAs="main">
-      <List id="macy-grid" variants={container} initial="hide" animate="show">
+    <Wrapper exit="exit" variants={pageAnimation} initial="hide" animate="show">
+      <List
+        id="macy-grid"
+        variants={galleryAnimation}
+        initial="hide"
+        animate="show"
+      >
         {data.map((painting, index) => {
           return <GalleryCard {...painting} id={index} key={index} />
         })}

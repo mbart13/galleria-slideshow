@@ -1,20 +1,15 @@
 import styled from 'styled-components/macro'
-import Container from 'components/organisms/Container'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import queries from 'styles/breakpoints'
-
-type ArticleProps = {
-  transform: string
-  isActive: boolean
-}
 
 export const Article = styled(motion.article)`
   position: absolute;
   left: 0;
-  padding: 0 1.5rem;
+  padding: 1.5rem;
   margin: 0 auto;
   max-width: var(--max-width);
+
   @media ${queries.desktopUp} {
     margin-right: 1.5rem;
     display: flex;
@@ -33,7 +28,7 @@ export const Header = styled.div`
   }
 `
 
-export const Figure = styled.figure`
+export const Figure = styled(motion.figure)`
   position: relative;
   margin-bottom: 11rem;
 
@@ -181,7 +176,7 @@ export const Button = styled(motion.button)`
   font-size: 0.625rem;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.2s linear;
+  transition: all 0.2s linear;
 
   @media ${queries.tabletUp} {
     top: unset;
@@ -189,7 +184,12 @@ export const Button = styled(motion.button)`
   }
 
   &:hover {
-    background-color: rgba(255, 255, 255, 0.25);
+    background-color: rgba(255, 255, 255, 0.85);
+    color: var(--color-black);
+  }
+
+  &:hover svg g {
+    fill: var(--color-black);
   }
 
   span {
