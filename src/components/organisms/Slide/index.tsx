@@ -1,14 +1,14 @@
 import queries from 'styles/breakpoints'
 import { useDispatch, useSelector } from 'react-redux'
-import { motion, AnimatePresence, AnimateSharedLayout } from 'framer-motion'
-import { useCallback, useEffect, useLayoutEffect, useRef } from 'react'
+import { AnimatePresence } from 'framer-motion'
+
 import { ReactComponent as IconView } from 'assets/shared/icon-view-image.svg'
-import { Painting } from 'models/painting'
 import {
   currentSlideIndex,
   currentSlide,
   getDirection,
 } from 'store/slidesSlice'
+import { openLightBox } from 'store/lightboxSlice'
 import {
   Article,
   ArtistImageDesktop,
@@ -45,7 +45,6 @@ const Slide = (): JSX.Element => {
   const currentIndex = useSelector(currentSlideIndex)
   const direction = useSelector(getDirection)
   const current = useSelector(currentSlide)
-  // const slideRef = useRef<HTMLDivElement>()
   const dispatch = useDispatch()
 
   return (
@@ -82,6 +81,7 @@ const Slide = (): JSX.Element => {
               <img src={current.artist.image} alt="" />
             </ArtistImageDesktop>
             <Button
+              onClick={() => dispatch(openLightBox())}
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1 }}

@@ -1,18 +1,8 @@
-import styled, { keyframes, css } from 'styled-components/macro'
+import styled from 'styled-components/macro'
 
 type ProgressBarProps = {
   width: number
 }
-
-const animateProgress = (width: number) => keyframes`
-  0% {
-    width: 0;
-  }
-
-  100% {
-    width: ${width}%;
-  }
-`
 
 const Wrapper = styled.div<ProgressBarProps>`
   position: relative;
@@ -26,10 +16,6 @@ const Wrapper = styled.div<ProgressBarProps>`
     background-color: var(--color-black);
     height: 100%;
     width: ${props => `${props.width}%`};
-    /* animation: ${props =>
-      css`
-        ${animateProgress(props.width)} 1s linear
-      `}; */
   }
 `
 

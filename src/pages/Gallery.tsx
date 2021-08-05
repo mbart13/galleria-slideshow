@@ -1,13 +1,11 @@
 import styled from 'styled-components/macro'
-import { Link } from 'react-router-dom'
 import queries from 'styles/breakpoints'
 import Container from 'components/organisms/Container'
 import data from 'data/data.json'
 import Macy from 'macy'
-import { Dispatch, SetStateAction, useEffect } from 'react'
+import { useEffect } from 'react'
 import GalleryCard from 'components/molecules/GalleryCard'
 import { motion } from 'framer-motion'
-import { useDispatch } from 'react-redux'
 
 export const container = {
   hide: {
@@ -40,7 +38,7 @@ const List = styled(motion.ul)`
 `
 
 const macyOptions = {
-  container: '#masonry-grid',
+  container: '#macy-grid',
   trueOrder: true,
   mobileFirst: true,
   margin: 24,
@@ -54,25 +52,16 @@ const macyOptions = {
   },
 }
 
-type GalleryProps = {
-  setCurrent: Dispatch<SetStateAction<number>>
-}
-
-const Gallery: React.FC<GalleryProps> = ({ setCurrent }): JSX.Element => {
+const Gallery = (): JSX.Element => {
   useEffect(() => {
     new Macy(macyOptions)
   }, [])
 
   return (
     <Wrapper forwardedAs="main">
-      <List
-        id="masonry-grid"
-        variants={container}
-        initial="hide"
-        animate="show"
-      >
+      <List id="macy-grid" variants={container} initial="hide" animate="show">
         {data.map((painting, index) => {
-          return <GalleryCard {...painting} id={index} key={painting.name} />
+          return <GalleryCard {...painting} id={index} key={index} />
         })}
       </List>
     </Wrapper>
