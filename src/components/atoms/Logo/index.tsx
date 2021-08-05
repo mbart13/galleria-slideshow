@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components/macro'
-import { ReactComponent as LogoIcon } from 'assets/shared/logo.svg'
+import LogoIcon from 'assets/shared/logo.svg'
 import queries from 'styles/breakpoints'
 
 const StyledLink = styled(Link)`
@@ -23,7 +23,7 @@ const Logo = (): JSX.Element => {
   return (
     <StyledLink to="/">
       <Wrapper>
-        <LogoIcon aria-hidden="true" />
+        <img src={LogoIcon} alt="Galleria Logo - home" />
       </Wrapper>
     </StyledLink>
   )

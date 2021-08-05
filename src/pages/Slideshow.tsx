@@ -24,7 +24,13 @@ const Wrapper = styled(motion.main)`
 
 const Slideshow = (): JSX.Element => {
   return (
-    <Wrapper exit="exit" variants={pageAnimation} initial="hide" animate="show">
+    <Wrapper
+      exit="exit"
+      variants={pageAnimation}
+      initial="hide"
+      animate="show"
+      aria-live="polite"
+    >
       <Slide />
       <SlideFooter />
     </Wrapper>

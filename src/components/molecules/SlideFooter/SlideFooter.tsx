@@ -73,4 +73,8 @@ export const ArrowButton = styled.button`
   border: none;
   padding: 0;
   cursor: pointer;
+
+  &:hover svg g {
+    fill: var(--color-black);
+  }
 `
