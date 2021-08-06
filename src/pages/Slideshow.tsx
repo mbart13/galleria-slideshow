@@ -1,8 +1,12 @@
 import styled from 'styled-components/macro'
+import { useCallback, useEffect, useRef } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { motion } from 'framer-motion'
+
 import queries from 'styles/breakpoints'
 import Slide from 'components/organisms/Slide'
 import SlideFooter from 'components/molecules/SlideFooter'
-import { motion } from 'framer-motion'
+import { isPlaying, paginate, currentSlideIndex } from 'store/slidesSlice'
 import { pageAnimation } from 'utils/animations'
 
 const Wrapper = styled(motion.main)`
@@ -22,7 +26,32 @@ const Wrapper = styled(motion.main)`
   }
 `
 
+const INTERVAL = 6000
+
 const Slideshow = (): JSX.Element => {
+  const id = useRef<number | undefined>()
+  const dispatch = useDispatch()
+  const isSlideshowPlaying = useSelector(isPlaying)
+  const currentIndex = useSelector(currentSlideIndex)
+
+  const clearInterval = () => window.clearInterval(id.current)
+
+  const startInterval = useCallback(() => {
+    id.current = window.setInterval(() => {
+      dispatch(paginate(1))
+    }, INTERVAL)
+  }, [dispatch])
+
+  useEffect(() => {
+    if (isSlideshowPlaying) {
+      startInterval()
+    } else {
+      clearInterval()
+    }
+
+    return clearInterval
+  }, [currentIndex, isSlideshowPlaying, startInterval, dispatch])
+
   return (
     <Wrapper
       exit="exit"

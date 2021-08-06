@@ -7,7 +7,7 @@ import { ReactComponent as IconView } from 'assets/shared/icon-view-image.svg'
 import {
   currentSlideIndex,
   currentSlide,
-  getDirection,
+  slidesDirection,
 } from 'store/slidesSlice'
 import { openLightBox } from 'store/lightboxSlice'
 import {
@@ -26,7 +26,7 @@ import { slideAnimation } from 'utils/animations'
 
 const Slide = (): JSX.Element => {
   const currentIndex = useSelector(currentSlideIndex)
-  const direction = useSelector(getDirection)
+  const direction = useSelector(slidesDirection)
   const current = useSelector(currentSlide)
   const dispatch = useDispatch()
   const [imgLoaded, setImgLoaded] = useState(false)
@@ -41,8 +41,8 @@ const Slide = (): JSX.Element => {
         animate="center"
         exit="exit"
         transition={{
-          opacity: { duration: 0.5, ease: 'easeInOut' },
-          x: { duration: 0.5, ease: 'easeInOut' },
+          duration: 0.5,
+          ease: 'easeInOut',
         }}
       >
         <Header>

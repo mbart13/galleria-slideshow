@@ -1,12 +1,14 @@
 import styled from 'styled-components/macro'
-import queries from 'styles/breakpoints'
-import data from 'data/data.json'
 import Macy from 'macy'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
 
+import queries from 'styles/breakpoints'
+import data from 'data/data.json'
 import GalleryCard from 'components/molecules/GalleryCard'
 import { pageAnimation, galleryAnimation } from 'utils/animations'
+import { isPlaying, stopPlaying, resetIndex } from 'store/slidesSlice'
 
 const Wrapper = styled(motion.main)`
   padding: 1.5rem;
@@ -41,6 +43,18 @@ const macyOptions = {
 }
 
 const Gallery = (): JSX.Element => {
+  const dispatch = useDispatch()
+  const isSlideshowPlaying = useSelector(isPlaying)
+  // if (isSlideshowPlaying) {
+  //   dispatch(resetIndex())
+  //   dispatch(toggleIsPlaying())
+  // }
+
+  useEffect(() => {
+    dispatch(resetIndex())
+    dispatch(stopPlaying())
+  }, [isSlideshowPlaying, dispatch])
+
   useEffect(() => {
     new Macy(macyOptions)
   }, [])
