@@ -2,13 +2,13 @@ import styled from 'styled-components/macro'
 import Macy from 'macy'
 import { motion } from 'framer-motion'
 import { useEffect } from 'react'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import queries from 'styles/breakpoints'
 import data from 'data/data.json'
 import GalleryCard from 'components/molecules/GalleryCard'
 import { pageAnimation, galleryAnimation } from 'utils/animations'
-import { isPlaying, resetSlider } from 'store/slidesSlice'
+import { resetSlider } from 'store/slidesSlice'
 
 const Wrapper = styled(motion.main)`
   padding: 1.5rem;
