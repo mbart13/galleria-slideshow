@@ -39,12 +39,10 @@ const slidesSlice = createSlice({
     toggleIsPlaying: state => {
       state.isPlaying = !state.isPlaying
     },
-    stopPlaying: state => {
-      state.isPlaying = false
-    },
-    resetIndex: state => {
+    resetSlider: state => {
       state.currentSlideIndex = 0
       state.direction = 0
+      state.isPlaying = false
     },
   },
 })
@@ -64,12 +62,7 @@ export const slidesDirection = (state: RootState): number =>
 export const isPlaying = (state: RootState): boolean =>
   state.slideshow.isPlaying
 
-export const {
-  paginate,
-  setCurrentSlide,
-  toggleIsPlaying,
-  resetIndex,
-  stopPlaying,
-} = slidesSlice.actions
+export const { paginate, setCurrentSlide, toggleIsPlaying, resetSlider } =
+  slidesSlice.actions
 
 export default slidesSlice.reducer

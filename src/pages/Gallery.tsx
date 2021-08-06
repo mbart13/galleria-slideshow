@@ -8,7 +8,7 @@ import queries from 'styles/breakpoints'
 import data from 'data/data.json'
 import GalleryCard from 'components/molecules/GalleryCard'
 import { pageAnimation, galleryAnimation } from 'utils/animations'
-import { isPlaying, stopPlaying, resetIndex } from 'store/slidesSlice'
+import { isPlaying, resetSlider } from 'store/slidesSlice'
 
 const Wrapper = styled(motion.main)`
   padding: 1.5rem;
@@ -45,14 +45,9 @@ const macyOptions = {
 const Gallery = (): JSX.Element => {
   const dispatch = useDispatch()
   const isSlideshowPlaying = useSelector(isPlaying)
-  // if (isSlideshowPlaying) {
-  //   dispatch(resetIndex())
-  //   dispatch(toggleIsPlaying())
-  // }
 
   useEffect(() => {
-    dispatch(resetIndex())
-    dispatch(stopPlaying())
+    dispatch(resetSlider())
   }, [isSlideshowPlaying, dispatch])
 
   useEffect(() => {
