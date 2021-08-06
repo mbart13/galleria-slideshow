@@ -9,8 +9,7 @@ import GalleryCard from 'components/molecules/GalleryCard'
 import { pageAnimation, galleryAnimation } from 'utils/animations'
 
 const Wrapper = styled(motion.main)`
-  padding-top: 1.5rem;
-  padding: 0 1.5rem;
+  padding: 1.5rem;
   margin: 0 auto;
   max-width: var(--max-width);
   @media ${queries.tabletUp} {
