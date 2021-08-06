@@ -1,7 +1,6 @@
 import queries from 'styles/breakpoints'
 import { useDispatch, useSelector } from 'react-redux'
 import { AnimatePresence } from 'framer-motion'
-import { useState } from 'react'
 
 import { ReactComponent as IconView } from 'assets/shared/icon-view-image.svg'
 import {
@@ -29,7 +28,6 @@ const Slide = (): JSX.Element => {
   const direction = useSelector(slidesDirection)
   const current = useSelector(currentSlide)
   const dispatch = useDispatch()
-  const [imgLoaded, setImgLoaded] = useState(false)
 
   return (
     <AnimatePresence initial={false} custom={direction}>
@@ -49,18 +47,14 @@ const Slide = (): JSX.Element => {
           <Figure
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+            transition={{ duration: 2 }}
           >
             <picture>
               <source
                 media={queries.tabletUp}
                 srcSet={current.images.hero.large}
               />
-              <img
-                src={current.images.hero.small}
-                alt=""
-                onLoad={() => setImgLoaded(true)}
-              />
+              <img src={current.images.hero.small} alt="" />
             </picture>
             <Caption>
               <h1>{current.name}</h1>
@@ -72,12 +66,10 @@ const Slide = (): JSX.Element => {
             <ArtistImageDesktop>
               <img src={current.artist.image} alt="" />
             </ArtistImageDesktop>
-            {imgLoaded && (
-              <Button onClick={() => dispatch(openLightBox())}>
-                <IconView />
-                <span>View image</span>
-              </Button>
-            )}
+            <Button onClick={() => dispatch(openLightBox())}>
+              <IconView />
+              <span>View image</span>
+            </Button>
           </Figure>
         </Header>
         <Body year={current.year}>
