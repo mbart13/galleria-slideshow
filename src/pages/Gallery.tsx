@@ -44,11 +44,10 @@ const macyOptions = {
 
 const Gallery = (): JSX.Element => {
   const dispatch = useDispatch()
-  const isSlideshowPlaying = useSelector(isPlaying)
 
   useEffect(() => {
     dispatch(resetSlider())
-  }, [isSlideshowPlaying, dispatch])
+  }, [dispatch])
 
   useEffect(() => {
     new Macy(macyOptions)
