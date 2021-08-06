@@ -15,7 +15,7 @@ import {
   Footer,
   SlideInfo,
   Wrapper,
-} from './SlideFooter'
+} from './SlideFooter.styles.'
 
 const SlideFooter = (): JSX.Element => {
   const current = useSelector(currentSlide)

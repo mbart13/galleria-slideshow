@@ -1,4 +1,5 @@
 import styled from 'styled-components/macro'
+import { motion } from 'framer-motion'
 
 import queries from 'styles/breakpoints'
 
@@ -68,11 +69,12 @@ export const SlideInfo = styled.div`
   }
 `
 
-export const ArrowButton = styled.button`
+export const ArrowButton = styled(motion.button)`
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+  transition: fill 0.2s linear;
 
   & svg g {
     transition: fill 0.2s linear;
