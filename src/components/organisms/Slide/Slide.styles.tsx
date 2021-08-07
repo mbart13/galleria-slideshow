@@ -35,6 +35,14 @@ export const Figure = styled(motion.figure)`
   @media ${queries.tabletUp} {
     width: 29.6875rem;
     margin-bottom: 0;
+    margin-left: auto;
+    margin-right: auto;
+    transform: translateX(-4rem);
+  }
+
+  @media ${queries.desktopUp} {
+    margin: 0;
+    transform: translateX(0);
   }
 `
 
@@ -42,7 +50,6 @@ export const Caption = styled.figcaption`
   position: absolute;
   background-color: var(--color-white);
   padding: 1.5rem;
-  /* min-width: 17.5rem; */
   bottom: -3.5rem;
   width: 85%;
 

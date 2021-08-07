@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   }
 
   @media ${queries.laptopUp} {
-    top: 64rem;
+    top: 66rem;
   }
   @media ${queries.desktopUp} {
     top: 46.875rem;

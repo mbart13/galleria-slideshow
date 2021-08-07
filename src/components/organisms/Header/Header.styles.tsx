@@ -18,6 +18,7 @@ export const StyledHeader = styled(motion.header)`
 export const SlideshowButton = styled.button`
   background: transparent;
   border: none;
+  padding: 0;
   color: var(--color-grey-1);
   text-transform: uppercase;
   font-size: 0.5625rem;
