@@ -17,18 +17,18 @@ const GalleryCard: React.FC<Painting> = ({
   const dispatch = useDispatch()
   return (
     <motion.li variants={cardAnimation}>
-      <Figure>
-        <Link
-          to="/slideshow"
-          onClick={() => dispatch(setCurrentSlide(id ? id : 0))}
-        >
+      <Link
+        to="/slideshow"
+        onClick={() => dispatch(setCurrentSlide(id ? id : 0))}
+      >
+        <Figure>
           <img src={images.thumbnail} alt="" />
           <Caption variants={captionAnimation}>
             <h2>{name}</h2>
             <p>{artist.name}</p>
           </Caption>
-        </Link>
-      </Figure>
+        </Figure>
+      </Link>
     </motion.li>
   )
 }
