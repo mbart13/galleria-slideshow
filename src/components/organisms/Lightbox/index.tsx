@@ -15,7 +15,7 @@ const LightBox = (): JSX.Element => {
   const isLightboxOpen = useSelector(isOpen)
   const dispatch = useDispatch()
   const modalRef = useRef<HTMLDivElement>(null)
-  const btnRef = useRef<HTMLButtonElement>(null)
+
   const handleClose = useCallback(() => dispatch(closeLightBox()), [dispatch])
 
   const handleEsc = useCallback(
@@ -44,12 +44,6 @@ const LightBox = (): JSX.Element => {
     return () => window.removeEventListener('keydown', handleEsc)
   }, [handleEsc])
 
-  useEffect(() => {
-    if (btnRef.current) {
-      btnRef.current.focus()
-    }
-  })
-
   return ReactDOM.createPortal(
     <AnimatePresence>
       {isLightboxOpen && (
@@ -64,10 +58,7 @@ const LightBox = (): JSX.Element => {
           >
             <ImageWrapper>
               <img src={current.images.gallery} alt={current.name} />
-              <CloseButton
-                onClick={() => dispatch(closeLightBox())}
-                ref={btnRef}
-              >
+              <CloseButton onClick={() => dispatch(closeLightBox())}>
                 Close
               </CloseButton>
             </ImageWrapper>
