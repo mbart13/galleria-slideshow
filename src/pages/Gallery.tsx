@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux'
 import queries from 'styles/breakpoints'
 import data from 'data/data.json'
 import GalleryCard from 'components/molecules/GalleryCard'
-import { pageAnimation, galleryAnimation } from 'utils/animations'
+// import { pageAnimation, galleryAnimation } from 'utils/animations'
 import { resetSlider } from 'store/slidesSlice'
 
 const Wrapper = styled(motion.main)`
@@ -56,12 +56,7 @@ const Gallery = (): JSX.Element => {
   return (
     <Wrapper>
       <h1 className="sr-only">Main Gallery</h1>
-      <List
-        id="macy-grid"
-        variants={galleryAnimation}
-        initial="hide"
-        animate="show"
-      >
+      <List id="macy-grid" initial="hide" animate="show">
         {data.map((painting, index) => {
           return <GalleryCard {...painting} id={index} key={index} />
         })}
@@ -70,4 +65,5 @@ const Gallery = (): JSX.Element => {
   )
 }
 // exit="exit" variants={pageAnimation} initial="hide" animate="show"
+//        variants={galleryAnimation}
 export default Gallery

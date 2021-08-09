@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useDispatch } from 'react-redux'
 
 import { setCurrentSlide } from 'store/slidesSlice'
-import { captionAnimation } from 'utils/animations'
-import { cardAnimation } from 'utils/animations'
+// import { captionAnimation } from 'utils/animations'
+// import { cardAnimation } from 'utils/animations'
 import { Caption, Figure } from './GalleryCard.styles'
 
 const GalleryCard: React.FC<Painting> = ({
