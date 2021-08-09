@@ -4,8 +4,8 @@ import { motion } from 'framer-motion'
 import { useDispatch } from 'react-redux'
 
 import { setCurrentSlide } from 'store/slidesSlice'
-// import { captionAnimation } from 'utils/animations'
-// import { cardAnimation } from 'utils/animations'
+import { captionAnimation } from 'utils/animations'
+import { cardAnimation } from 'utils/animations'
 import { Caption, Figure } from './GalleryCard.styles'
 
 const GalleryCard: React.FC<Painting> = ({
@@ -16,14 +16,14 @@ const GalleryCard: React.FC<Painting> = ({
 }): JSX.Element => {
   const dispatch = useDispatch()
   return (
-    <motion.li>
+    <motion.li variants={cardAnimation}>
       <Link
         to="/slideshow"
         onClick={() => dispatch(setCurrentSlide(id ? id : 0))}
       >
         <Figure>
           <img src={images.thumbnail} alt="" />
-          <Caption>
+          <Caption variants={captionAnimation}>
             <h2>{name}</h2>
             <p>{artist.name}</p>
           </Caption>
@@ -32,6 +32,5 @@ const GalleryCard: React.FC<Painting> = ({
     </motion.li>
   )
 }
-// variants={cardAnimation}
-// variants={captionAnimation}
+
 export default GalleryCard
