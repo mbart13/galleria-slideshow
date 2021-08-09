@@ -54,7 +54,7 @@ const Gallery = (): JSX.Element => {
   }, [])
 
   return (
-    <Wrapper exit="exit" variants={pageAnimation} initial="hide" animate="show">
+    <Wrapper>
       <h1 className="sr-only">Main Gallery</h1>
       <List
         id="macy-grid"
@@ -69,5 +69,5 @@ const Gallery = (): JSX.Element => {
     </Wrapper>
   )
 }
-
+// exit="exit" variants={pageAnimation} initial="hide" animate="show"
 export default Gallery

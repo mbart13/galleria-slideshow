@@ -16,14 +16,14 @@ const GalleryCard: React.FC<Painting> = ({
 }): JSX.Element => {
   const dispatch = useDispatch()
   return (
-    <motion.li variants={cardAnimation}>
+    <motion.li>
       <Link
         to="/slideshow"
         onClick={() => dispatch(setCurrentSlide(id ? id : 0))}
       >
         <Figure>
           <img src={images.thumbnail} alt="" />
-          <Caption variants={captionAnimation}>
+          <Caption>
             <h2>{name}</h2>
             <p>{artist.name}</p>
           </Caption>
@@ -32,5 +32,6 @@ const GalleryCard: React.FC<Painting> = ({
     </motion.li>
   )
 }
-
+// variants={cardAnimation}
+// variants={captionAnimation}
 export default GalleryCard
