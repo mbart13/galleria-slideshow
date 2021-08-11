@@ -38,13 +38,13 @@ Users should be able to:
 To run this project locally:
 
 ```
-yarn && yarn dev
+yarn && yarn start
 ```
 
 or
 
 ```
-npm install && npm run dev
+npm install && npm start
 ```
 
 ## My process
