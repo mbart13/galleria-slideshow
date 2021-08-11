@@ -3,7 +3,6 @@ import { motion } from 'framer-motion'
 
 export const Overlay = styled(motion.div)`
   position: fixed;
-
   top: 0;
   bottom: 0;
   display: grid;

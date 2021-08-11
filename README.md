@@ -1,46 +1,96 @@
-# Getting Started with Create React App
+# Frontend Mentor - Galleria slideshow site solution
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is a solution to the [Galleria slideshow site challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/galleria-slideshow-site-tEA4pwsa6). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Available Scripts
+## Table of contents
 
-In the project directory, you can run:
+- [Overview](#overview)
+  - [The challenge](#the-challenge)
+  - [Screenshots](#screenshot)
+  - [Links](#links)
+  - [Setup](#setup)
+- [My process](#my-process)
+  - [Built with](#built-with)
+  - [What I learned](#what-i-learned)
+- [Author](#author)
 
-### `yarn start`
+## Overview
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### The challenge
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Users should be able to:
 
-### `yarn test`
+- View the optimal layout for the app depending on their device's screen size
+- See hover states for all interactive elements on the page
+- Navigate the slideshow and view each painting in a lightbox
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Screenshots
 
-### `yarn build`
+![](./screenshot_01.png)
+![](./screenshot_02.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Links
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[Live Site URL](https://galleria-slideshow.vercel.app)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Setup
 
-### `yarn eject`
+To run this project locally:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+```
+yarn && yarn dev
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+or
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+```
+npm install && npm run dev
+```
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## My process
 
-## Learn More
+### Built with
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- React
+- React-Router-Dom
+- Styled Components
+- Framer-Motion
+- Macy.js
+- Redux Toolkit
+- TypeScript
+- Mobile-first workflow
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### What I learned
+
+In this project I had more practice with state management using Redux Toolkit used to control not only state of slides, but also image lightbox.
+I played quite a bit with Framer-Motion to create animations, I learned how to stagger children elements, how to animate page transitions etc.
+I learned one new tool I haven't used before - Macy.js - a lightweight library to create masonry grid.
+
+If there is one code fragment I'd like to highlight, that would be slides autoplay/stop logic. Here I made use of 2 react hooks: useRef to store interval ID and preserve it before re-renders and useEffect, which if returns a function, that function will be called 1) right before next time useEffect is run 2) when component is unmounted. This was ideal use case for clearing the interval.
+
+```js
+  const id = useRef<number | undefined>()
+
+  const clearInterval = () => window.clearInterval(id.current)
+
+  const startInterval = useCallback(() => {
+    id.current = window.setInterval(() => {
+      dispatch(paginate(1))
+    }, INTERVAL)
+  }, [dispatch])
+
+  useEffect(() => {
+    if (isSlideshowPlaying) {
+      startInterval()
+    } else {
+      clearInterval()
+    }
+
+    return clearInterval
+
+  }, [currentIndex, isSlideshowPlaying, startInterval, dispatch])
+```
+
+## Author
+
+- Frontend Mentor - [@mbart13](https://www.frontendmentor.io/profile/mbart13)
